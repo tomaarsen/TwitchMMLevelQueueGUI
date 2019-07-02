@@ -60,15 +60,13 @@ class Database:
         return self.execute("SELECT MAX(id)+1 FROM Levels;", fetch=True)[0][0] or 1
 
     def pop(self):
-        print(self.get_levels())
         self.execute("DELETE FROM Levels WHERE id = (SELECT MIN(id) FROM Levels)")
-        print(self.get_levels())
 
     def get_current_level(self):
         return self.execute("SELECT user, code FROM Levels ORDER BY id LIMIT 1;", fetch=True)
 
     def get_levels(self):
-        return self.execute("SELECT user, code FROM Levels;", fetch=True)
+        return self.execute("SELECT user, code FROM Levels ORDER BY id;", fetch=True)
 
     def get_clear_time(self):
         return self.execute("SELECT time FROM LevelClear;", fetch=True)

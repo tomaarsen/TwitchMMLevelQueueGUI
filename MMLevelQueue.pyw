@@ -77,7 +77,7 @@ class MMLevelQueue:
                     self.handle_next_level()
                 elif m.message.startswith(("!level", "!current")):
                     self.handle_current_level()
-                elif m.message.startswith("!clearlevel") and self.check_permissions(m):
+                elif m.message.startswith(("!clearlevel", "!clearqueue")) and self.check_permissions(m):
                     self.handle_clear_level()
                 elif m.message.startswith(("!levelhelp", "!helplevel")):
                     self.handle_help()
